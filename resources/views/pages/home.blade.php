@@ -53,12 +53,18 @@
             @foreach($posts as $post)
 
             <article class="blog-post">
-                <h2 class="blog-post-title">{{$post->title}}</h2>
+                <h2 class="blog-post-title">{{$post->title}}  @if(auth()->check()) <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit',$post->id)}}">ویرایش</a> @endif</h2>
                 <p class="blog-post-meta">{{$post->created_at}} <a href="#"> Mark </a></p>
                 <p>{{$post->content}}</p>
+                <p><a class="btn btn-sm btn-outline-secondary" href="{{route('posts.show',$post->id)}}">مشاهده پست کامل</a></p>
             </article>
 
             @endforeach
+
+            {{-- Pagination --}}
+            <div class="d-flex justify-content-center">
+                {!! $posts->links() !!}
+            </div>
 
 
             <nav class="blog-pagination" aria-label="Pagination">

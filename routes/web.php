@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::namespace('Auth')->group(function () {
     Route::get('/login',[AuthController::class,'show_login_form'])->name('login');

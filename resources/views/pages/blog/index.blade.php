@@ -1,7 +1,6 @@
 @extends('layout.app')
 @include('partials.header')
 @section('content')
-
     <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
             <div class="col-md-6 px-0">
@@ -10,7 +9,6 @@
                 <p class="lead mb-0"><a href="#" class="text-white fw-bold">توضیحات بیشتر</a></p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <h3 class="pb-4 mb-4 fst-italic border-bottom">
@@ -20,9 +18,10 @@
                 @foreach($posts as $post)
 
                     <article class="blog-post">
-                        <h2 class="blog-post-title">{{$post->title}}</h2>
+                        <h2 class="blog-post-title">{{$post->title}}  @if(auth()->check()) <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit',$post->id)}}">ویرایش</a> @endif</h2>
                         <p class="blog-post-meta">{{$post->created_at}} <a href="#"> Mark </a></p>
                         <p>{{$post->content}}</p>
+                        <p><a class="btn btn-sm btn-outline-secondary" href="{{route('posts.show',$post->id)}}">مشاهده پست کامل</a></p>
                     </article>
 
                 @endforeach
@@ -37,7 +36,5 @@
 
 
         </div>
-
     </main>
-
 @endsection

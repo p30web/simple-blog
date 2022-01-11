@@ -4,10 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
+use Spatie\Image\Exceptions\InvalidManipulation;
+use Spatie\MediaLibrary\Conversions\Conversion;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\FileAdder;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Post extends Model
+
+/**
+ * @property mixed $content
+ * @property mixed $title
+ */
+class Post extends Model implements HasMedia
 {
-    use HasFactory , HasFactory;
+    use HasFactory , SoftDeletes , InteractsWithMedia;
+
+    protected $table = "posts";
 
     protected $fillable = [
         'title',
@@ -15,4 +31,12 @@ class Post extends Model
         'author_id',
         'status',
     ];
+
+    public function registerMediaConversions(Media $media = null):void {
+        $this->addMediaConversion('thumb')
+            ->width(100)
+            ->height(100)
+            ->performOnCollections('post_collection');
+    }
+
 }

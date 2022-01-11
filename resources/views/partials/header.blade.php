@@ -2,7 +2,7 @@
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <a class="link-secondary" href="#">صفحه اصلی</a>
+                <a class="link-secondary" href="{{route('home')}}">صفحه اصلی</a>
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="#">وبلاگ نمونه</a>
@@ -32,7 +32,10 @@
 
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#">ایجاد پست جدید</a>
+            @if(auth()->check())
+            <a class="p-2 link-secondary" href="{{route('posts.create')}}">ایجاد پست جدید</a>
+            <a class="p-2 link-secondary" href="{{route('posts.index')}}">پست های من</a>
+            @endif
             <a class="p-2 link-secondary" href="#">الولايات المتحدة</a>
             <a class="p-2 link-secondary" href="#">التقنية</a>
             <a class="p-2 link-secondary" href="#">التصميم</a>
