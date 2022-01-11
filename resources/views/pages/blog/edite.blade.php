@@ -11,24 +11,21 @@
             </div>
         </div>
 
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-white">
                 <div class="panel-heading clearfix">
-                    <h4 class="panel-title">ایجاد پست جدید</h4>
+                    <h4 class="panel-title">بروز رسانی پست</h4>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ action('\App\Http\Controllers\PostController@update') }}" method="POST"
-                          role="form">
+                    <form action="{{ action('\App\Http\Controllers\PostController@update',$post->id) }}" method="POST" role="form"  enctype="multipart/form-data">
+                        @method('PUT')
                         <div class="row">
                             @include('pages.blog.partials.form')
                         </div>
+                        <br>
                         <div class="row">
-                            <button type="submit" id="create" class="btn btn-addon m-b-sm btn-primary"><i
-                                    class="fa fa-plus"></i>ذخیره
-                            </button>
-                            <a class="btn btn-addon m-b-sm btn-default"
-                               href="{{ action('\App\Http\Controllers\PostController@index') }}"><i
-                                    class="fa fa-chevron-left"></i>لفو</a>
+                            <button style="width: 200px;margin-left: 2px" type="submit" id="create" class="btn btn-addon m-b-sm btn-primary"><i class="fa fa-plus"></i>ذخیره</button>
+                            <a style="width: 200px;" class="btn btn-addon m-b-sm btn-danger" href="{{ action('\App\Http\Controllers\PostController@index') }}"><i class="fa fa-chevron-left"></i>لفو</a>
                         </div>
                     </form>
                 </div>

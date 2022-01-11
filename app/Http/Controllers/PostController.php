@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Media;
 use App\Models\Post;
+use App\Models\Media;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
@@ -19,6 +21,11 @@ class PostController extends Controller
     }
 
     public function create(){
+
+        if(Gate::denies('create-post')){
+            return view('pages.access_denied');
+        }
+
         $post = new Post();
         return view('pages.blog.create',['post' => $post]);
     }
@@ -52,7 +59,12 @@ class PostController extends Controller
     }
 
     public function edit(Post $post){
-        return view('pages.blog.create',[
+
+        if(Gate::denies('edite-post')){
+            return view('pages.access_denied');
+        }
+
+        return view('pages.blog.edite',[
             'post' => $post
         ]);
     }
@@ -82,7 +94,9 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->save();
 
-        return redirect(action('\App\Http\Controllers\Admin\ViolationsController@index'));
+        self::attachMedia($post);
+
+        return redirect(action('\App\Http\Controllers\PostController@index'));
     }
 
     public function show (Post $post){
@@ -90,4 +104,21 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    public function destroy(Post $post)
+    {
+       if(Gate::denies('destroy-post')){
+            return view('pages.access_denied');
+        }
+
+        try {
+            $post->delete();
+            return redirect()->action('\App\Http\Controllers\PostController@index')->with("status", "پست با موفقیت حذف شد.");
+        } catch (QueryException $exception) {
+            dd($exception->getMessage());
+        } catch (\Exception $exception) {
+            return redirect()->action('\App\Http\Controllers\PostController@index')->with("error", "خطایی رخ داد لطفا مجددا تلاش نمایید.");
+        }
+    }
+
 }

@@ -37,16 +37,7 @@
             <a class="p-2 link-secondary" href="{{route('posts.index')}}">پست های من</a>
             @endif
             <a class="p-2 link-secondary" href="#">الولايات المتحدة</a>
-            <a class="p-2 link-secondary" href="#">التقنية</a>
-            <a class="p-2 link-secondary" href="#">التصميم</a>
-            <a class="p-2 link-secondary" href="#">الحضارة</a>
-            <a class="p-2 link-secondary" href="#">المال والأعمال</a>
-            <a class="p-2 link-secondary" href="#">السياسة</a>
-            <a class="p-2 link-secondary" href="#">الرأي العام</a>
-            <a class="p-2 link-secondary" href="#">العلوم</a>
-            <a class="p-2 link-secondary" href="#">الصحة</a>
-            <a class="p-2 link-secondary" href="#">الموضة</a>
-            <a class="p-2 link-secondary" href="#">السفر</a>
+
         </nav>
     </div>
 </div>

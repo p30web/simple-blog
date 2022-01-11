@@ -18,7 +18,22 @@
                 @foreach($posts as $post)
 
                     <article class="blog-post">
-                        <h2 class="blog-post-title">{{$post->title}}  @if(auth()->check()) <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit',$post->id)}}">ویرایش</a> @endif</h2>
+                        <h2 class="blog-post-title">{{$post->title}}
+                             @if(auth()->check())
+                             @can('edite-post')
+                             <a class="btn btn-sm btn-outline-secondary" href="{{route('posts.edit',$post->id)}}">ویرایش</a>
+                             @endcan
+
+                             @can('destroy-post')
+                                <form action="{{ route('posts.destroy' , $post->id) }}" style="display:inline-block" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">حذف پست</button>
+                                  </form>
+                             @endcan
+
+
+                             @endif</h2>
                         <p class="blog-post-meta">{{$post->created_at}} <a href="#"> Mark </a></p>
                         <p>{{$post->content}}</p>
                         <p><a class="btn btn-sm btn-outline-secondary" href="{{route('posts.show',$post->id)}}">مشاهده پست کامل</a></p>
