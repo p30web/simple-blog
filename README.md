@@ -38,7 +38,7 @@
 
 6) دستور : php artisan storage:link را وارد نمایید . 
 
-
+و تمام
 
 
 
