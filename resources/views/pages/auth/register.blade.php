@@ -23,24 +23,21 @@
                                 <form action="{{ action('\App\Http\Controllers\Auth\AuthController@process_register') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input @if($errors->has('name'))  style="border:2px solid red" @endif id="name" class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" value="{{old('name')}}">
+                                        <label for="name">نام و نام خانوادگی</label>
+                                        <input @if($errors->has('name'))  style="border:2px solid red" @endif id="name" class="form-control form-control-lg" type="text" name="name" placeholder="نام و نام خانوادگی خود را وارد نمایید" value="{{old('name')}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="company">Company</label>
-                                        <input @if($errors->has('company'))  style="border:2px solid red" @endif id="company" class="form-control form-control-lg" type="text" name="company" value="{{old('company')}}" placeholder="Enter your company name">
+                                        <label for="email">ایمیل</label>
+                                        <input @if($errors->has('email'))  style="border:2px solid red" @endif id="email" class="form-control form-control-lg" type="email" name="email" value="{{old('email')}}" placeholder="ایمیل خود را وارد نمایید" style="text-align:right">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input @if($errors->has('email'))  style="border:2px solid red" @endif id="email" class="form-control form-control-lg" type="email" name="email" value="{{old('email')}}" placeholder="Enter your email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input @if($errors->has('password'))  style="border:2px solid red" @endif class="form-control form-control-lg" type="password" id="password" name="password" value="{{old('password')}}" placeholder="Enter password">
+                                        <label for="password">پسورد</label>
+                                        <input @if($errors->has('password'))  style="border:2px solid red" @endif class="form-control form-control-lg" type="password" id="password" name="password" value="{{old('password')}}" placeholder="پسورد مورد نظر خود را وارد نمایید">
                                     </div>
                                     <div class="text-center mt-3">
-                                        <a href="{{ action('\App\Http\Controllers\Auth\AuthController@show_login_form') }}" class="btn btn-lg btn-primary">log in</a>
-                                        <button type="submit" class="btn btn-lg btn-outline-primary">Register</button>
+                                        <button type="submit" class="btn btn-lg btn-outline-primary">عضویت</button>
+                                        <a href="{{ action('\App\Http\Controllers\Auth\AuthController@show_login_form') }}" class="btn btn-lg btn-primary">عضو سایت هستید ؟ / وارد شوید</a>
+
                                     </div>
                                 </form>
                             </div>

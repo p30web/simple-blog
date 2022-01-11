@@ -26,17 +26,17 @@
                                 <form method="post" action="{{ action('\App\Http\Controllers\Auth\AuthController@process_login') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input class="form-control form-control-lg" type="email" name="email" value="{{old('email')}}" placeholder="Enter your email" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                                        <label>ایمیل</label>
+                                        <input class="form-control form-control-lg" dir="rtl" type="email" name="email" value="{{old('email')}}" placeholder="ایمیل خود را وارد نمایید." style="text-align: right" >
                                     </div>
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                                        <label>پسورد</label>
+                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="پسورد خود را وارد نمایید ." autocomplete="off" >
                                     </div>
                                     <div>
                                         <div class="custom-control custom-checkbox align-items-center">
                                             <input id="remember-me" type="checkbox" name="remember_me">
-                                            <label for="remember-me">Remember me next time</label>
+                                            <label for="remember-me">مرا به خاطر بسپار</label>
                                         </div>
                                     </div>
                                     <div class="text-center mt-3">
