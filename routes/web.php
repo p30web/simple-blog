@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,22 +35,4 @@ Route::namespace('Auth')->group(function () {
 
 Route::resource('posts',PostController::class);
 
-Route::get('install', function (Request $request) {
-
-    $getUserTable = (new \App\Models\User())->getTable();
-
-    $tables = collect(\Illuminate\Support\Facades\DB::select('SHOW TABLES'))->map(function ($tables) {
-        foreach ($tables as $val) {
-            return $val;
-        }
-    })->toArray();
-
-    if (!in_array($getUserTable, $tables)) {
-        \Illuminate\Support\Facades\Artisan::call('migrate --seed');
-        dump(\Illuminate\Support\Facades\Artisan::output());
-    }else{
-        dump('error : app installed ..') ;
-    }
-
-});
 

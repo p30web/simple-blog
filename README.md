@@ -24,8 +24,22 @@
 
 -------------------------
 
-راه اندازی پروژه :
+راه اندازی پروژه بعد از clone گرفتن به ترتیب دستورات زیر را اجرا کنید : 
 
-domain.com/install
+1) composer install 
 
-کافی هست برای نصب پروژه route فوق را اجرا نمایید . 
+2) php artisan key:generate
+
+3) فایل .env.example را به .env تغییر نام دهید.
+
+4) در فایل .env در متغیر APP_URL : آدرس وب سایت خود را وارد نمایید . 
+
+5) دستور : php artisan migrate --seed را وارد نمایید . 
+
+6) دستور : php artisan storage:link را وارد نمایید . 
+
+
+
+
+
+
