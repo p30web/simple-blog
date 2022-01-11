@@ -39,4 +39,8 @@ class Post extends Model implements HasMedia
             ->performOnCollections('post_collection');
     }
 
+    public function author(){
+        return $this->hasOne(User::class,  'author_id', 'id');
+    }
+
 }
